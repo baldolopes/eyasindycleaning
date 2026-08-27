@@ -8,26 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('translate-x-full'); // Muestra el menú
-            body.style.overflow = 'hidden'; // Evita scroll al estar abierto
+            mobileMenu.classList.remove('translate-x-full');
+            body.style.overflow = 'hidden';
         });
     }
 
-    if (closeMenuBtn) {
+    if (closeMenuBtn && mobileMenu) {
         closeMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('translate-x-full'); // Esconde el menú
-            body.style.overflow = ''; // Habilita el scroll de nuevo
-        });
-    }
-
-    // Cerrar menú al hacer click en un link (opcional pero recomendado)
-    const mobileLinks = mobileMenu.querySelectorAll('a');
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
             mobileMenu.classList.add('translate-x-full');
             body.style.overflow = '';
         });
-    });
+    }
 
     // --- 2. HERO SLIDER AUTOMÁTICO ---
     let currentHeroSlide = 0;
@@ -41,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     }
 
-    // --- 3. REVIEWS SLIDER CON DATOS ---
+    // --- 3. REVIEWS SLIDER ---
     const reviews = [
         {
             text: "The most professional cleaning service in Indianapolis. They never miss a spot!",
@@ -71,19 +62,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const reviewContainer = document.getElementById('review-container');
 
     function updateReview(index) {
-        // Efecto de salida (Fade out)
+        if (!reviewContainer) return;
         reviewContainer.style.opacity = '0';
-        reviewContainer.style.transform = 'translateX(20px)';
+        reviewContainer.style.transform = 'translateY(10px)';
 
         setTimeout(() => {
             reviewText.textContent = `"${reviews[index].text}"`;
             reviewAuthor.textContent = `— ${reviews[index].author}`;
             reviewLocation.textContent = reviews[index].location;
             reviewInitial.textContent = reviews[index].initial;
-
-            // Efecto de entrada (Fade in)
             reviewContainer.style.opacity = '1';
-            reviewContainer.style.transform = 'translateX(0)';
+            reviewContainer.style.transform = 'translateY(0)';
         }, 300);
     }
 
@@ -96,21 +85,41 @@ document.addEventListener('DOMContentLoaded', () => {
         currentReview = (currentReview - 1 + reviews.length) % reviews.length;
         updateReview(currentReview);
     });
+
+    // --- 4. REVEAL ON SCROLL (EFECTO PREMIUM) ---
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    });
+
+    revealElements.forEach(el => {
+        revealObserver.observe(el);
+    });
 });
 
-// --- 4. REVEAL ON SCROLL (Intersection Observer) ---
+// Lógica para detectar el scroll y activar animaciones
 const revealElements = document.querySelectorAll('.reveal');
 
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+            // Cuando el elemento es visible, añade la clase 'active'
             entry.target.classList.add('active');
-            // Una vez que aparece, dejamos de observarlo para ahorrar memoria
+            // Deja de observar para que la animación solo ocurra una vez
             revealObserver.unobserve(entry.target);
         }
     });
 }, {
-    threshold: 0.15 // Aparece cuando el 15% del elemento es visible
+    threshold: 0.15 // Se activa cuando el 15% del elemento es visible
 });
 
 revealElements.forEach(el => {
