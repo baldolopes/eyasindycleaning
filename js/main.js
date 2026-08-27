@@ -97,3 +97,22 @@ document.addEventListener('DOMContentLoaded', () => {
         updateReview(currentReview);
     });
 });
+
+// --- 4. REVEAL ON SCROLL (Intersection Observer) ---
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            // Una vez que aparece, dejamos de observarlo para ahorrar memoria
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.15 // Aparece cuando el 15% del elemento es visible
+});
+
+revealElements.forEach(el => {
+    revealObserver.observe(el);
+});
