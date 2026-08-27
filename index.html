@@ -7,12 +7,11 @@
 
     <!-- SEO Indianapolis Focused -->
     <title>Professional Cleaning Services Indianapolis | Eya's Cleaning</title>
+    <link rel="canonical" href="https://eyasindycleaning.com/" />
     <meta name="description"
         content="Top-rated residential and commercial cleaning services in Indianapolis, IN. Custom checklists, punctual cleaners, and impeccable results for homes and offices.">
-    <meta name="keywords"
-        content="Cleaning services Indianapolis, house cleaning Indy, commercial cleaning Indianapolis, maid service IN, office cleaning Indianapolis">
 
-    <!-- Schema.org for Local Business (SEO Boost) -->
+    <!-- Schema.org for Local Business -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -20,30 +19,22 @@
       "name": "Eya's Cleaning",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Indianapolis",
-        "addressRegion": "IN",
-        "addressCountry": "US"
+        "addressLocality": "Indianapolis", "addressRegion": "IN", "addressCountry": "US"
       },
       "url": "https://eyasindycleaning.com",
-      "description": "Professional residential and commercial cleaning in Indianapolis."
+      "telephone": "+1-317-XXX-XXXX"
     }
     </script>
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: { royal: '#1E40AF', coral: '#F43F5E', mint: '#6EE7B7', yellow: '#FDE047' }
-                    }
-                }
-            }
-        }
-    </script>
+
+    <!-- CSS Producido por Tailwind -->
+    <link rel="stylesheet" href="css/output.css">
+
     <style>
         .hero-slide {
             opacity: 0;
@@ -63,10 +54,10 @@
     </style>
 </head>
 
-<body class="bg-white text-slate-900 font-['Plus_Jakarta_Sans']">
+<body class="bg-white text-slate-900 font-sans">
 
-    <!-- FLOATING CONTACT BUTTON (Mobile Optimization) -->
-    <a href="/contact/"
+    <!-- FLOATING CONTACT BUTTON -->
+    <a href="/contact/" aria-label="Contact us"
         class="fixed bottom-6 right-6 z-50 bg-brand-coral text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform md:hidden">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
@@ -74,13 +65,12 @@
         </svg>
     </a>
 
-    <!-- SQUARE ROUNDED NAVIGATION -->
+    <!-- NAVIGATION -->
     <div class="fixed top-2 left-0 right-0 z-50 px-2">
         <header
             class="max-w-7xl mx-auto nav-glass border border-slate-200 rounded-2xl shadow-sm px-6 py-4 flex items-center justify-between">
-            <!-- LOGO DE IMAGEN -->
             <a href="/" class="flex items-center group">
-                <img src="/images/eyas-logo.webp" alt="Eya's Cleaning Indianapolis Logo"
+                <img src="images/eyas-logo.webp" alt="Eya's Cleaning Logo"
                     class="h-10 md:h-12 w-auto transition-transform duration-300 group-hover:scale-105" loading="eager">
             </a>
 
@@ -88,199 +78,98 @@
                 <a href="index.html" class="font-semibold hover:text-brand-royal transition">Home</a>
                 <a href="/services/" class="font-semibold hover:text-brand-royal transition">Services</a>
                 <a href="/gallery/" class="font-semibold hover:text-brand-royal transition">Gallery</a>
-                <a href="/careers/" class="font-semibold hover:text-brand-royal transition">Careers</a>
-                <a href="/about/" class="font-semibold hover:text-brand-royal transition">About</a>
-                <a href="/contact/" class="font-semibold hover:text-brand-royal transition">Contact</a>
                 <a href="/contact/"
-                    class="bg-brand-royal text-white px-6 py-2 rounded-xl font-bold hover:bg-opacity-90 transition">Get
+                    class="bg-brand-royal text-white px-6 py-2 rounded-xl font-bold hover:bg-opacity-90 transition shadow-md">Get
                     a Quote</a>
             </nav>
 
-            <button class="md:hidden p-2" id="mobile-menu-toggle">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button class="md:hidden p-2 text-slate-900" id="mobile-menu-toggle" aria-label="Open menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
             </button>
         </header>
     </div>
 
-    <!-- HERO SECTION WITH AUTO-SLIDER -->
-    <section class="relative h-[90vh] flex items-center justify-center overflow-hidden pt-20">
-        <!-- Slider Images -->
-        <div id="hero-slider" class="absolute inset-0 -z-10">
-            <img src="/images/cleaning-home-service-eyas-indy.webp"
-                class="hero-slide active w-full h-full object-cover brightness-50"
-                alt="Person wearing orange cleaning gloves adjusting a lightbox sign that reads Cleaning Home in a modern living room."
-                title="Professional home cleaning by Eyas Indy Cleaning">
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-white z-[100] flex flex-col items-center justify-center space-y-8 text-2xl font-bold transition-transform duration-500 translate-x-full md:hidden">
+        <button id="mobile-menu-close" class="absolute top-6 right-6 text-slate-900" aria-label="Close menu">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <a href="index.html">Home</a>
+        <a href="/services/">Services</a>
+        <a href="/gallery/">Gallery</a>
+        <a href="/contact/" class="bg-brand-royal text-white px-10 py-4 rounded-2xl shadow-lg">Get a Quote</a>
+    </div>
 
-            <img src="/images/eyas-commercial-cleaning-cozy-cafe-indianapolis.webp"
-                class="hero-slide w-full h-full object-cover brightness-50"
-                alt="Cleaner sweeping the floor in a cozy café during a commercial cleaning service in Indianapolis"
-                title="Professional commercial cleaning by Eyas Indy Cleaning">
-
-            <img src="/images/woman-mopping-living-room-cleaning-service-eyas-indy.webp"
-                class="hero-slide w-full h-full object-cover brightness-50"
-                alt="Woman wearing headphones and yellow gloves mopping the wooden floor in a cozy living room with plants and a teal sofa."
-                title="Professional home cleaning by Eyas Indy Cleaning">
-
-            <img src="/images/eyas-house-cleaning-surface-wipe-indianapolis.webp"
-                class="hero-slide w-full h-full object-cover brightness-50"
-                alt="Woman wearing headphones and yellow gloves mopping the wooden floor in a cozy living room with plants and a teal sofa."
-                title="Professional home cleaning by Eyas Indy Cleaning">
-        </div>
-
-        <div class="text-center text-white px-4 max-w-4xl">
-            <span
-                class="bg-brand-coral px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest mb-6 inline-block">Indianapolis
-                Trusted Cleaners</span>
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">Your Home, <span
-                    class="text-brand-mint">Perfectly Clean</span></h1>
-            <p class="text-xl md:text-2xl mb-10 text-slate-100">Bespoke residential and commercial cleaning tailored to
-                your lifestyle in Indianapolis.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+    <main>
+        <!-- HERO -->
+        <section class="relative h-[90vh] flex items-center justify-center overflow-hidden pt-20">
+            <div id="hero-slider" class="absolute inset-0 -z-10">
+                <img src="images/cleaning-home-service-eyas-indy.webp" loading="eager"
+                    class="hero-slide active w-full h-full object-cover brightness-50" alt="Professional cleaning">
+                <img src="images/eyas-commercial-cleaning-cozy-cafe-indianapolis.webp" loading="lazy"
+                    class="hero-slide w-full h-full object-cover brightness-50" alt="Commercial cleaning">
+            </div>
+            <div class="text-center text-white px-4 max-w-4xl">
+                <span
+                    class="bg-brand-coral px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest mb-6 inline-block">Indy's
+                    Best</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">Your Home, <span
+                        class="text-brand-light">Perfectly Clean</span></h1>
+                <p class="text-xl md:text-2xl mb-10">Custom cleaning services in Indianapolis.</p>
                 <a href="/contact/"
-                    class="bg-white text-brand-royal px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition shadow-xl">Book
-                    a Free Estimate</a>
-                <a href="#services"
-                    class="border-2 border-white text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-brand-royal transition">Our
-                    Services</a>
+                    class="bg-white text-brand-royal px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition shadow-xl inline-block">Free
+                    Estimate</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- TRUST SECTION: REVIEWS SLIDER -->
-    <section class="py-24 bg-slate-50 overflow-hidden">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold mb-4 text-slate-900">What Our Indy Clients Say</h2>
-                <div class="flex justify-center text-brand-yellow space-x-1 mb-8">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-            </div>
-
-            <!-- Contenedor del Slider -->
-            <div class="relative">
-                <!-- Icono decorativo de comillas -->
-                <div class="absolute -top-10 -left-10 text-brand-royal/10 text-9xl font-serif select-none">“</div>
-
-                <!-- Tarjeta de Review -->
+        <!-- REVIEWS -->
+        <section class="py-24 bg-slate-50">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold mb-12 text-slate-900">What Our Clients Say</h2>
                 <div id="review-container"
-                    class="relative z-10 bg-white p-10 md:p-16 rounded-3xl shadow-xl border border-slate-100 transition-all duration-500 opacity-100 transform translate-x-0">
+                    class="bg-white p-10 rounded-3xl shadow-xl border border-slate-100 transition-all duration-500 min-h-[300px] flex flex-col justify-center">
                     <p id="review-text" class="text-xl md:text-2xl text-slate-700 italic leading-relaxed mb-8">
                         "The most professional cleaning service in Indianapolis. They never miss a spot!"
                     </p>
-                    <div class="flex items-center">
+                    <div class="flex items-center justify-center">
                         <div
-                            class="w-12 h-12 bg-brand-royal rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
+                            class="w-12 h-12 bg-brand-royal rounded-full flex items-center justify-center text-white font-bold mr-4">
                             <span id="review-initial">S</span>
                         </div>
-                        <div>
-                            <p id="review-author" class="font-bold text-slate-900 text-lg">— Sarah J.</p>
-                            <p id="review-location"
-                                class="text-brand-royal font-semibold text-sm uppercase tracking-wider">Carmel, IN</p>
+                        <div class="text-left">
+                            <p id="review-author" class="font-bold text-slate-900">— Sarah J.</p>
+                            <p id="review-location" class="text-brand-royal text-sm font-semibold uppercase">Carmel, IN
+                            </p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Controles (Flechas) -->
-                <div class="flex justify-center mt-10 space-x-4">
+                <div class="flex justify-center mt-8 space-x-4">
                     <button id="prev-review"
-                        class="p-3 rounded-full border-2 border-brand-royal text-brand-royal hover:bg-brand-royal hover:text-white transition-all active:scale-90">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                        </svg>
-                    </button>
+                        class="p-3 rounded-full border-2 border-brand-royal text-brand-royal hover:bg-brand-royal hover:text-white transition-all"><svg
+                            class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M15 19l-7-7 7-7" />
+                        </svg></button>
                     <button id="next-review"
-                        class="p-3 rounded-full border-2 border-brand-royal text-brand-royal hover:bg-brand-royal hover:text-white transition-all active:scale-90">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
+                        class="p-3 rounded-full border-2 border-brand-royal text-brand-royal hover:bg-brand-royal hover:text-white transition-all"><svg
+                            class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 5l7 7-7 7" />
+                        </svg></button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section class="py-24">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold mb-4 text-slate-900">Our Recent Projects</h2>
-                <p class="text-slate-600">Real results for our local Indianapolis clients.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Proyecto 1 -->
-                <div class="group relative overflow-hidden rounded-2xl bg-slate-200 aspect-square">
-                    <img src="/images/cleaning-supplies-living-room-project-eyas-indy.webp"
-                        alt="Cleaning gloves, cloth, and spray bottle placed on a round table in a tidy living room with a blue sofa and plants."
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        loading="lazy" title="Residential Deep Clean by Eya's Cleaning Indianapolis">
-                    <!-- Overlay al pasar el mouse -->
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-brand-royal/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                        <p class="text-white font-bold text-lg">Residential Deep Clean</p>
-                    </div>
-                </div>
-
-                <!-- Repetir para más proyectos... -->
-            </div>
-
-            <!-- Botón para ver más (opcional) -->
-            <div class="text-center mt-12">
-                <a href="/gallery/" class="inline-flex items-center font-bold text-brand-royal hover:underline">
-                    View All Projects
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M9 5l7 7-7 7" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
-    <!-- FOOTER -->
-    <footer class="bg-slate-900 text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-12">
-
-            <!-- COLUMNA 1: LOGO Y DESCRIPCIÓN (CENTRADA) -->
-            <div class="col-span-2 flex flex-col items-center text-center">
-                <!-- Logo centrado -->
-                <a href="/" class="mb-6 block">
-                    <img src="/images/eyas-logo.webp" alt="Eya's Cleaning Logo"
-                        class="h-16 w-auto brightness-0 invert opacity-90">
-                </a>
-                <!-- Texto centrado -->
-                <p class="text-slate-400 max-w-sm leading-relaxed">
-                    Serving the greater Indianapolis area with premium residential and
-                    commercial cleaning since 2024. Licensed, bonded, and insured.
-                </p>
-            </div>
-
-            <!-- COLUMNA 2: QUICK LINKS (SIN CAMBIOS) -->
-            <div>
-                <h4 class="font-bold mb-6 uppercase text-brand-mint">Quick Links</h4>
-                <ul class="space-y-4 text-slate-300">
-                    <li><a href="/services/" class="hover:text-white transition">Services</a></li>
-                    <li><a href="/careers/" class="hover:text-white transition">Join Our Team</a></li>
-                    <li><a href="/contact/" class="hover:text-white transition">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <!-- COLUMNA 3: CONTACT (SIN CAMBIOS) -->
-            <div>
-                <h4 class="font-bold mb-6 uppercase text-brand-mint">Contact</h4>
-                <p class="text-slate-300">Indianapolis, IN</p>
-                <p class="text-slate-300">info@eyasindycleaning.com</p>
-                <p class="text-slate-300 font-bold mt-4">(317) XXX-XXXX</p>
-            </div>
-
-        </div>
-
-        <!-- Línea final inferior -->
-        <div class="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-slate-800 text-center text-slate-500">
-            <p>&copy; 2024 Eya's Cleaning Services. All rights reserved.</p>
-        </div>
+    <footer class="bg-slate-900 text-white py-16 text-center">
+        <p>&copy; 2024 Eya's Cleaning Services. Indianapolis, IN.</p>
     </footer>
-    <!-- JAVASCRIPT FOR HERO SLIDER -->
-    <script src="/js/main.js"></script>
+
+    <!-- JS (Ruta corregida) -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>

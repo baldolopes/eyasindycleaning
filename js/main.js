@@ -2,14 +2,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. MENÚ MÓVIL ---
     const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu'); // Asegúrate de tener este ID en tu nav móvil
+    const closeMenuBtn = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const body = document.body;
 
-    if (mobileMenuBtn) {
+    if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
-            // Aquí puedes añadir la lógica para mostrar/ocultar el menú
-            console.log("Mobile menu toggled");
+            mobileMenu.classList.remove('translate-x-full'); // Muestra el menú
+            body.style.overflow = 'hidden'; // Evita scroll al estar abierto
         });
     }
+
+    if (closeMenuBtn) {
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full'); // Esconde el menú
+            body.style.overflow = ''; // Habilita el scroll de nuevo
+        });
+    }
+
+    // Cerrar menú al hacer click en un link (opcional pero recomendado)
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full');
+            body.style.overflow = '';
+        });
+    });
 
     // --- 2. HERO SLIDER AUTOMÁTICO ---
     let currentHeroSlide = 0;
